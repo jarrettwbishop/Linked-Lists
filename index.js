@@ -46,9 +46,48 @@ function LinkedList() {
 		if (index = 0) return head;
 		let currentNode = head;
 		for(let i = 0; i < index; i++) {
-			currentNode
+			currentNode = currentNode.pointer;
 
 		}
+		return currentNode;
+	}
+
+	const pop = () => {
+		let currentNode = at(size() - 1);
+		currentNode.pointer = null;
+	}
+
+	const contains = (value) => {
+		let currentNode = head;
+		while(currentNode.pointer !== null) {
+			if (currentNode.value == value) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	const find = (value) => {
+		let count = 0;
+		let currentNode = head;
+		while(currentNode.pointer !== null) {
+			if (currentNode.value == value) {
+				return count;
+			}
+			count++;
+		}
+		return null;
+	}
+
+	const toString = () => {
+		let output = head.value;
+		let currentNode = head;
+		while (currentNode.pointer !== null) {
+			currentNode = currentNode.pointer;
+			output += ` -> ${currentNode.value}`
+		}
+		output += ` -> null`
+		console.log(output);
 	}
 }
 
